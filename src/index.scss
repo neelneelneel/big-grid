@@ -1,0 +1,104 @@
+$header-height:32px;
+$counter-width:48px;
+$primary-color:#143F5B;
+$outline-color:#278DD3;
+$border-color:#dddddd;
+$background-even-color: #ffffff;
+$background-odd-color: #f8f8f8;
+%base {
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.big-grid {
+    @extend %base;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &__corner {
+        @extend %base;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $counter-width;
+        height: $header-height;
+        border: 1px solid $border-color;
+        cursor: pointer;
+    }
+    &__header {
+        @extend %base;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: $counter-width;
+        height: $header-height;
+        border-top: 1px solid $border-color;
+        overflow: hidden;
+        &__virtual {
+            @extend %base;
+            position: relative;
+        }
+    }
+    &__counter {
+        @extend %base;
+        position: absolute;
+        top: $header-height;
+        bottom: 0;
+        left: 0;
+        width: $counter-width;
+        border-left: 1px solid $border-color;
+        overflow: hidden;
+        &__virtual {
+            @extend %base;
+            position: relative;
+        }
+    }
+    &__main {
+        @extend %base;
+        position: absolute;
+        top: $header-height;
+        right: 0;
+        bottom: 0;
+        left: $counter-width;
+        overflow: auto;
+        &__virtual {
+            @extend %base;
+            position: relative;
+        }
+    }
+    &__cell {
+        @extend %base;
+        overflow: hidden;
+        border-right: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        &:focus {
+            outline: none;
+            border: 1px solid $outline-color;
+            box-shadow: inset 0 0 2px $outline-color;
+        }
+        &--even {
+            background: $background-even-color;
+        }
+        &--odd {
+            background: $background-odd-color;
+        }
+        &--counter {
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            width: $counter-width - 1px;
+            font-weight: 600;
+        }
+        &--header {
+            color: $primary-color;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            height: $header-height - 1px;
+            line-height: $header-height - 1px;
+            font-weight: 600;
+        }
+    }
+}
